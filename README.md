@@ -55,7 +55,7 @@ var Menu = new mongoose.Schema({
 ![home](documentation/sign-up.jpg)
 
 /login - page for login
-![login](documentation/login.jpg)
+![login](documentation/log-in.jpg)
 
 /menus - page for viewing all menus
 ![view-all](documentation/list-of-menus.jpg)
