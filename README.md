@@ -52,10 +52,10 @@ var Menu = new mongoose.Schema({
 ## Wireframes
 
 /home - page for login or register
-![home](documentation/sign-up.jgp)
+![home](documentation/sign-up.jpg)
 
 /login - page for login
-![login](documentation/login.jgp)
+![login](documentation/login.jpg)
 
 /menus - page for viewing all menus
 ![view-all](documentation/list-of-menus.jpg)
