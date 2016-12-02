@@ -4,11 +4,6 @@ var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var User = mongoose.model('User');
 
-
-/* GET posts listings. */
-router.get('/', restrict, function(req, res, next) {
-  res.render('post-form');
-});
 /* GET posts listings. */
 router.get('/settings', restrict, function(req, res, next) {
   res.render('settings');
@@ -27,7 +22,7 @@ router.post('/settings', function(req,res){
       school: req.body.schoolname
   }, function(err, numberAffected, rawResponse) {
     console.log(err,numberAffected, rawResponse);
-     res.redirect('/home');
+     res.redirect('/home/posts');
   });
 });
 
