@@ -12,7 +12,8 @@ function addPost(evt){
 	var title = document.querySelector('#postTitle').value;
 	var description = document.querySelector('#postDescription').value;
 
-	var url = 'http://localhost:3000/api/post/create';
+	// var url = 'http://localhost:3000/api/post/create';
+	var url = 'http://i6.cims.nyu.edu:17368/api/post/create';
 	var req= new XMLHttpRequest();
 	req.open('POST', url, true);
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
