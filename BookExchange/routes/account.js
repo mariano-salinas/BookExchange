@@ -10,12 +10,15 @@ router.get('/settings', restrict, function(req, res, next) {
 });
 
 router.get('/posts', restrict, function(req,res, next){
-  Post.find().sort('-posted').find(function (err, posts) {
-      res.render('posts', {'posts': posts});
-  });
+    User.findOne({login: req.session.passport.user}, function(err, user, count){
+      Post.find({username:user.username}, function(err, posts, count){
+        console.log(posts);
+        res.render('edit', {'posts': posts, 'user': user});
+      });
+    });
 });
 
-router.post('/settings', function(req,res){
+router.post('/settings', restrict, function(req,res){
   User.update({login: req.session.passport.user}, {
       username: req.body.newUsername,
       phone_number: req.body.phonenumber,

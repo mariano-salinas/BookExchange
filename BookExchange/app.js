@@ -19,8 +19,9 @@ fs.readdirSync('./models').forEach(function(file) {
 });
 
 var login = require('./routes/login');
-var index = require('./routes/index');
+var home = require('./routes/home');
 var api = require('./routes/api');
+var account = require('./routes/account');
 
 
 var app = express();
@@ -46,8 +47,9 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', login);
-app.use('/home', index);
+app.use('/home', home);
 app.use('/api', api);
+app.use('/account', account);
 
 // passport config
 var Account = require('./models/account');

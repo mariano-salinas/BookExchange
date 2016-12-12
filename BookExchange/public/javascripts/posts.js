@@ -1,4 +1,4 @@
-ocument.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", init);
 
 function init(){
 	// Get the modal
