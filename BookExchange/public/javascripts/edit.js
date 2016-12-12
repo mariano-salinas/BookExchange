@@ -32,7 +32,7 @@ function updatePost(evt){
 	var description = document.querySelector('#updateDescription').value;
 
 	var url = 'http://localhost:3000/api/post/update';
-	// var url = 'http://i6.cims.nyu.edu:17367/api/post/create';
+	// var url = 'http://i6.cims.nyu.edu:17367/api/post/update';
 	var req= new XMLHttpRequest();
 	req.open('POST', url, true);
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
@@ -45,7 +45,7 @@ function deletePost(evt){
    		$('.modal').modal('hide');
 	});
 	var url = 'http://localhost:3000/api/post/delete';
-	// var url = 'http://i6.cims.nyu.edu:17367/api/post/create';
+	// var url = 'http://i6.cims.nyu.edu:17367/api/post/delete';
 	var req= new XMLHttpRequest();
 	req.open('DELETE', url, true);
 	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');

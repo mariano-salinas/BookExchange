@@ -4,27 +4,14 @@ var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var User = mongoose.model('User');
 
-/* GET posts listings. */
-router.get('/settings', restrict, function(req, res, next) {
-  res.render('settings');
-});
-
 router.get('/posts', restrict, function(req,res, next){
-  Post.find().sort('-posted').find(function (err, posts) {
+  Post.find({})
+    .sort({'created_at': 'desc'})
+    .exec(function(err, posts){
       res.render('posts', {'posts': posts});
   });
 });
 
-router.post('/settings', restrict, function(req,res){
-  User.update({login: req.session.passport.user}, {
-      username: req.body.newUsername,
-      phone_number: req.body.phonenumber,
-      school: req.body.schoolname
-  }, function(err, numberAffected, rawResponse) {
-    console.log(err,numberAffected, rawResponse);
-     res.redirect('/home/posts');
-  });
-});
 
 function restrict(req, res, next) {
   if (req.session.passport) {
