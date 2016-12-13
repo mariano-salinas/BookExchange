@@ -3,20 +3,8 @@
     {{> post}}
     <br>
     <br>
-
-	 <!-- <div id="blog" class="row"> 
-            {{#each posts}}
-                <div class="col-md-10 blogShort">
-                     <h1>{{this.title}}</h1>
-                     <img src="{{this.src}}" class="pull-left img-responsive thumb margin10 img-thumbnail">
-                     <article><p>
-                         {{this.description}}   
-                         </p></article>
-                 </div>
-             {{/each}}
-     </div> -->
+    
     {{#each posts}}
-    {{this.user}}
     <div class="row">
         <div class="col-sm-1">
             <div class="thumbnail">
@@ -30,8 +18,11 @@
             <strong>{{this.username}}</strong> <span class="text-muted">{{this.created_at}}</span>
         </div>
         <div class="panel-body">
-            <h2>{{this.title}} - {{this.class_number}}</h2>
-            {{this.description}}
+            <h3>{{this.title}}</h3>
+            <p>{{this.description}}</p>
+            <div class="panel-footer">
+                Class number:{{this.class_number}}
+            </div>
         </div><!-- /panel-body -->
         </div><!-- /panel panel-default -->
         </div><!-- /col-sm-5 -->

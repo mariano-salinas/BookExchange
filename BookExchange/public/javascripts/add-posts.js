@@ -1,6 +1,3 @@
-// var production ='http://i6.cims.nyu.edu:17368/api/post/create';
-// var local = 'http://localhost:3000/api/post/create';
-
 document.addEventListener("DOMContentLoaded", init);
 
 function init(){

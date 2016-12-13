@@ -23,7 +23,6 @@ router.post('/settings', restrict, function(req,res){
       phone_number: req.body.phonenumber,
       school: req.body.schoolname
   }, function(err, numberAffected, rawResponse) {
-    console.log(err,numberAffected, rawResponse);
      res.redirect('/home/posts');
   });
 });
