@@ -12,6 +12,9 @@ router.get('/settings', restrict, function(req, res, next) {
 router.get('/posts', restrict, function(req,res, next){
     User.findOne({login: req.session.passport.user}, function(err, user, count){
       Post.find({login: req.session.passport.user}, function(err, posts, count){
+        posts.forEach(function(post){
+          post.last_viewed = new Date();
+        });
         res.render('edit', {'posts': posts, 'user': user});
       });
     });

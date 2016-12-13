@@ -8,7 +8,16 @@ router.get('/posts', restrict, function(req,res, next){
   Post.find({})
     .sort({'created_at': 'desc'})
     .exec(function(err, posts){
-      res.render('posts', {'posts': posts});
+        datedPosts = posts;
+        if (posts.length !== 0){
+          datedPosts = posts.filter(function(post){
+            return post.class_number.length >= 3;
+          });
+        }
+        datedPosts.forEach(function(post){
+          post.users_viewed += 1;
+        });
+      res.render('posts', {'posts': datedPosts});
   });
 });
 

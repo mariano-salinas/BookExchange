@@ -8,6 +8,7 @@ var Post = mongoose.Schema({
 	username: String,
 	login: String,
 	user_img: String,
+	last_viewed: Date
 });
 
 module.exports = mongoose.model('Post', Post);

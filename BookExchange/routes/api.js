@@ -16,6 +16,7 @@ router.post('/post/create', function(req,res){
         username: user.username,
         login: req.session.passport.user,
         user_img: img,
+        users_viewed: 1,
         created_at: new Date()
       });
       post.save(function(err, saved_message, count) {
@@ -26,13 +27,11 @@ router.post('/post/create', function(req,res){
 
 router.post('/post/update', restrict, function(req, res){
   Post.update({ _id: req.body.postId }, { $set: { title: req.body.postTitle, description: req.body.postDescription }}, function(err, post, count){
-    console.log('updating post', post);
   });
 });
 
 router.delete('/post/delete', restrict, function(req, res){
   Post.remove({ _id: req.body.postId }, function(err, post) {
-    console.log('deleting post',post);
   });
 });
 

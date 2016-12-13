@@ -49,7 +49,7 @@ function deletePost(evt){
 	$(function () {
    		$('.modal').modal('hide');
 	});
-	//var url = 'http://localhost:3000/api/post/delete';
+	// var url = 'http://localhost:3000/api/post/delete';
 	var url = 'http://i6.cims.nyu.edu:17367/api/post/delete';
 	var req= new XMLHttpRequest();
 	req.open('DELETE', url, true);
