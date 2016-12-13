@@ -15,8 +15,8 @@ function editSettings(evt){
 
 
 	if (username !== '' && phonenumber !== '' && school !== ''){
-		var url = 'http://localhost:3000/account/settings';
-		// var url = 'http://i6.cims.nyu.edu:17367/account/settings';
+		// var url = 'http://localhost:3000/account/settings';
+		var url = 'http://i6.cims.nyu.edu:17367/account/settings';
 		var req= new XMLHttpRequest();
 		req.open('POST', url, true);
 		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');

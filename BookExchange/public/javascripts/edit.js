@@ -29,8 +29,8 @@ function updatePost(evt){
 	var warning = document.querySelector('#warningMessage');
 
 	if (title !== '' && description !== ''){
-		var url = 'http://localhost:3000/api/post/update';
-		// var url = 'http://i6.cims.nyu.edu:17367/api/post/update';
+		// var url = 'http://localhost:3000/api/post/update';
+		var url = 'http://i6.cims.nyu.edu:17367/api/post/update';
 		var req= new XMLHttpRequest();
 		req.open('POST', url, true);
 		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');

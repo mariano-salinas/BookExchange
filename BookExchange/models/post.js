@@ -8,7 +8,6 @@ var Post = mongoose.Schema({
 	username: String,
 	login: String,
 	user_img: String,
- 	books : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
 });
 
 module.exports = mongoose.model('Post', Post);
