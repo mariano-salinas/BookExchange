@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Book = mongoose.model('Book');
 var Post = mongoose.model('Post');
 var User = mongoose.model('User');
 var Account = mongoose.model('Account');
