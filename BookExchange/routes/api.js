@@ -7,36 +7,13 @@ var User = mongoose.model('User');
 var Account = mongoose.model('Account');
 
 
-router.post('/book/create', function(req,res){
-    var book = new Book({
-      title: req.body.bookTitle,
-      ISBN: req.body.bookISBN,
-      author: req.body.bookAuthor
-    });
-    book.save(function(err, saved_message, count) {
-      if (err) { return res.send(500, 'Error occurred: database error.'); }
-      res.redirect('/login');
-    });
-});
-
-router.get('/books', function(req, res) {
-  var author = req.query.author;
-
-  var query = {};
-  if (author !== undefined){
-    query.author = author;
-  }
-  Book.find(query,function(err, books,count){
-    res.json(books);
-  });
-});
-
 router.post('/post/create', function(req,res){
     User.findOne({login: req.session.passport.user}, function(err, user, count){
       var img = user.user_img === undefined ? 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png' : user.user_img;
       var post = new Post({
         title: req.body.postTitle,
         description: req.body.postDescription,
+        class_number: req.body.classNumber,
         username: user.username,
         user_img: img,
         created_at: new Date()
@@ -48,15 +25,15 @@ router.post('/post/create', function(req,res){
 });
 
 router.post('/post/update', restrict, function(req, res){
-  console.log(req.body);
+  console.log('post id', req.body.postId);
   Post.update({ _id: req.body.postId }, { $set: { title: req.body.postTitle, description: req.body.postDescription }}, function(err, post, count){
-    console.log(post);
+    console.log('updating post', post);
   });
 });
 
 router.delete('/post/delete', restrict, function(req, res){
-  Post.remove({ _id: req.body.postId }, function(err) {
-    console.log(err);
+  Post.remove({ _id: req.body.postId }, function(err, post) {
+    console.log('deleting post',post);
   });
 });
 
@@ -80,8 +57,12 @@ router.get('/accounts', restrict,  function(req, res) {
 });
 
 function restrict(req, res, next) {
-    req.session.error = 'Access denied!';
-    res.redirect('/login');
+  // if (req.session.passport) {
+    next();
+  // } else {
+    // req.session.error = 'Access denied!';
+    // res.redirect('/login');
+  // }
 }
 
 module.exports = router;

@@ -12,7 +12,6 @@ router.get('/settings', restrict, function(req, res, next) {
 router.get('/posts', restrict, function(req,res, next){
     User.findOne({login: req.session.passport.user}, function(err, user, count){
       Post.find({username:user.username}, function(err, posts, count){
-        console.log(posts);
         res.render('edit', {'posts': posts, 'user': user});
       });
     });

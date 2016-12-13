@@ -12,7 +12,6 @@ function init(){
 	var updateBtn = document.querySelector('#updateBtn');
 	updateBtn.addEventListener('click', function(evt){
 		updatePost(evt);
-		location.reload();
 	});
 
 	var deleteBtn = document.querySelector('#deleteBtn');
@@ -25,18 +24,24 @@ function init(){
 }
 function updatePost(evt){
 	evt.preventDefault();
-	$(function () {
-   		$('.modal').modal('hide');
-	});
 	var title = document.querySelector('#updateTitle').value;
 	var description = document.querySelector('#updateDescription').value;
+	var warning = document.querySelector('#warningMessage');
 
-	var url = 'http://localhost:3000/api/post/update';
-	// var url = 'http://i6.cims.nyu.edu:17367/api/post/update';
-	var req= new XMLHttpRequest();
-	req.open('POST', url, true);
-	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-	req.send('postTitle=' + title +'&postDescription=' + description + '&postId=' + postId);
+	if (title !== '' && description !== ''){
+		var url = 'http://localhost:3000/api/post/update';
+		// var url = 'http://i6.cims.nyu.edu:17367/api/post/update';
+		var req= new XMLHttpRequest();
+		req.open('POST', url, true);
+		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		req.send('postTitle=' + title +'&postDescription=' + description + '&postId=' + postId);
+		$(function () {
+   			$('.modal').modal('hide');
+		});
+		location.reload();
+	} else {
+		warning.classList.remove('hidden');
+	}
 }
 
 function deletePost(evt){
