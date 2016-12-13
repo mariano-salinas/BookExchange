@@ -6,6 +6,7 @@ var Post = mongoose.Schema({
 	created_at: Date,
 	description: String,
 	username: String,
+	login: String,
 	user_img: String,
  	books : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
 });

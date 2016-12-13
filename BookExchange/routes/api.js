@@ -15,6 +15,7 @@ router.post('/post/create', function(req,res){
         description: req.body.postDescription,
         class_number: req.body.classNumber,
         username: user.username,
+        login: req.session.passport.user,
         user_img: img,
         created_at: new Date()
       });
@@ -25,7 +26,6 @@ router.post('/post/create', function(req,res){
 });
 
 router.post('/post/update', restrict, function(req, res){
-  console.log('post id', req.body.postId);
   Post.update({ _id: req.body.postId }, { $set: { title: req.body.postTitle, description: req.body.postDescription }}, function(err, post, count){
     console.log('updating post', post);
   });
